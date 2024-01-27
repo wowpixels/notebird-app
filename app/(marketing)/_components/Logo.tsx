@@ -12,14 +12,7 @@ const Logo = () => {
         width={40}
         height={40}
         alt="NoteBird Logo"
-        className="dark:hidden"
-      />
-      <Image
-        src={"/logo-dark.svg"}
-        width={40}
-        height={40}
-        alt="NoteBird Logo"
-        className="hidden dark:block"
+        className="dark:invert"
       />
       <p className={cn("font-bold", font.className)}>NoteBird</p>
     </div>
