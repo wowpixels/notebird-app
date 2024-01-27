@@ -1,11 +1,19 @@
 # NoteBird App
 
-![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+![Next JS](https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white)
+![Clerk](https://img.shields.io/badge/Clerk-6C47FF.svg?style=for-the-badge&logo=Clerk&logoColor=white)
+![ShadCN](https://img.shields.io/badge/shadcn/ui-000000.svg?style=for-the-badge&logo=shadcn/ui&logoColor=white)
 
-The NoteBird App is a note-taking app similar to Notion which uses Markdown language. The app is developed for educational purposes.
+The NoteBird App is a note-taking app, basically a Notion Clone. The app is developed for educational purposes to learn how such a full stack app is developed. The following tech is used in NoteBird:
+
+- TailwindCSS
+- Convex, The Backend
+- Clerk, Auth
+- Sonner, Toast Notifications
+- ShadCN, UI
+- usehooks-ts, React hook lib written in TypeScript
 
 **Live:** [NoteBird App](https://notebird.wowpixels.app)
 
