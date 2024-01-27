@@ -8,6 +8,10 @@ body,
   height: 100%;
 }
 
+body {
+  @apply dark:bg-[#1f1f1f];
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
