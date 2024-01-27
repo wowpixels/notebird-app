@@ -8,14 +8,7 @@ const Sketch = () => {
           <Image
             src={"/documents.png"}
             fill
-            className="object-contain dark:hidden"
-            title="Documents"
-            alt="documents"
-          />
-          <Image
-            src={"/documents-dark.png"}
-            fill
-            className="object-contain hidden dark:block"
+            className="object-contain dark:invert"
             title="Documents"
             alt="documents"
           />
@@ -24,14 +17,7 @@ const Sketch = () => {
           <Image
             src={"/reading.png"}
             fill
-            className="object-contain dark:hidden"
-            title="Reading"
-            alt="Reading"
-          />
-          <Image
-            src={"/reading-dark.png"}
-            fill
-            className="object-contain hidden dark:block"
+            className="object-contain dark:invert"
             title="Reading"
             alt="Reading"
           />
