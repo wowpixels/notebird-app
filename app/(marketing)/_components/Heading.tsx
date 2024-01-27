@@ -26,7 +26,7 @@ const Heading = () => {
       )}
       {isAuthenticated && !isLoading && (
         <Button asChild>
-          <Link href="/documents">Join NoteBird</Link>
+          <Link href="/documents">View your NoteBird Dashboard</Link>
         </Button>
       )}
       {!isAuthenticated && !isLoading && (
