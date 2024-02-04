@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import { FileIcon } from "lucide-react";
 
 interface DocumentListProps {
-  parentDocumentId: Id<"documents">;
+  parentDocumentId?: Id<"documents">;
   level?: number;
   data?: Doc<"documents">[];
 }
@@ -56,7 +56,7 @@ const DocumentList = ({ parentDocumentId, level = 0 }: DocumentListProps) => {
           level === 0 && "hidden",
         )}
       >
-        No pages inside
+        No page inside
       </p>
       {documents.map((document) => (
         <div key={document._id}>

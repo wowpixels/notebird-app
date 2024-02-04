@@ -1,10 +1,25 @@
 "use client";
+import {
+  DropdownMenu,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { cn } from "@/lib/utils";
+import { useUser } from "@clerk/clerk-react";
 import { useMutation } from "convex/react";
-import { ChevronDown, ChevronRight, LucideIcon, Plus } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronRight,
+  LucideIcon,
+  MoreHorizontal,
+  Plus,
+  Trash,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -34,9 +49,22 @@ const Item = ({
   onExpand,
   expanded,
 }: ItemProps) => {
-  // create a new document using the convex api
-  const create = useMutation(api.documents.create);
+  const { user } = useUser();
   const router = useRouter();
+  // create a new document and archive using the convex api
+  const create = useMutation(api.documents.create);
+  const archive = useMutation(api.documents.archive);
+
+  const onArchive = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    event.stopPropagation();
+    if (!id) return;
+    const promise = archive({ id });
+    toast.promise(promise, {
+      loading: "Moving to trash...",
+      success: "Note moved to trash!",
+      error: "Failed to archive note",
+    });
+  };
 
   const handleExpand = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -80,7 +108,7 @@ const Item = ({
       {!!id && (
         <div
           role="button"
-          className="h-full rounded-sm h-4 w-4 mr-2 hover:bg-neutral-300 dark:bg-neutral-600"
+          className="rounded-sm h-4 w-4 mr-2 hover:bg-neutral-300 dark:bg-neutral-600"
           onClick={handleExpand}
         >
           <ChevronIcon className="h-4 w-4 shrink-0 mr-2 text-muted-foreground/50" />
@@ -98,12 +126,37 @@ const Item = ({
         </kbd>
       )}
       {!!id && (
-        <div
-          role="button"
-          onClick={onCreate}
-          className="ml-auto flex items items-center gap-x-2"
-        >
-          <div className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600">
+        <div className="ml-auto flex items-center gap-x-2">
+          <DropdownMenu>
+            <DropdownMenuTrigger onClick={(e) => e.stopPropagation()} asChild>
+              <div
+                role="button"
+                className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600"
+              >
+                <MoreHorizontal className="h-4 w-4 text-muted-foreground" />
+              </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              className="w-60"
+              align="start"
+              side="right"
+              forceMount
+            >
+              <DropdownMenuItem onClick={onArchive}>
+                <Trash className="w-4 h-4 mr-2 text-muted-foreground" />
+                Delete
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <div className="p-2 text-xs text-muted-foreground">
+                Last edited by <strong>{user?.fullName}</strong>
+              </div>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <div
+            role="button"
+            onClick={onCreate}
+            className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600"
+          >
             <Plus className="w-4 h-4 text-muted-foreground" />
           </div>
         </div>
