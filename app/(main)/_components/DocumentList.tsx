@@ -56,7 +56,7 @@ const DocumentList = ({ parentDocumentId, level = 0 }: DocumentListProps) => {
           level === 0 && "hidden",
         )}
       >
-        No page inside
+        No note inside
       </p>
       {documents.map((document) => (
         <div key={document._id}>

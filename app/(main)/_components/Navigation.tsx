@@ -5,6 +5,7 @@ import {
   PlusCircle,
   Search,
   Settings,
+  Trash,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
@@ -16,6 +17,12 @@ import { api } from "@/convex/_generated/api";
 import Item from "./Item";
 import { toast } from "sonner";
 import DocumentList from "./DocumentList";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
+import TrashBox from "./TrashBox";
 
 const Navigation = () => {
   const pathname = usePathname();
@@ -143,11 +150,27 @@ const Navigation = () => {
           <UserItem />
           <Item label="Search" icon={Search} isSearch onClick={() => {}} />
           <Item label="Settings" icon={Settings} onClick={() => {}} />
-          <Item onClick={handleCreate} label="New Page" icon={PlusCircle} />
+          <Item onClick={handleCreate} label="New Note" icon={PlusCircle} />
         </div>
         <div className="mt-5">
           <DocumentList />
-          <Item onClick={handleCreate} icon={Plus} label="Add a page" />
+          <Item onClick={handleCreate} icon={Plus} label="Add a note" />
+          <Popover>
+            <PopoverTrigger className="w-full mt-4">
+              <Item label="Trash" icon={Trash} />
+            </PopoverTrigger>
+            <PopoverContent
+              side={isMobile ? "bottom" : "right"}
+              align="start"
+              className="p-0 w-72"
+            >
+              <div className="p-2">
+                <p className="text-muted-foreground/80 text-sm font-medium">
+                  <TrashBox />
+                </p>
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
         <div
           onMouseDown={handleMouseDown}
