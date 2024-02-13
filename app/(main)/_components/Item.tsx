@@ -108,7 +108,7 @@ const Item = ({
       {!!id && (
         <div
           role="button"
-          className="rounded-sm h-4 w-4 mr-2 hover:bg-neutral-300 dark:bg-neutral-600"
+          className="rounded-sm h-4 w-4 mr-2 hover:bg-neutral-300 dark:hover:bg-neutral-800"
           onClick={handleExpand}
         >
           <ChevronIcon className="h-4 w-4 shrink-0 mr-2 text-muted-foreground/50" />

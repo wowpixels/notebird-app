@@ -24,8 +24,10 @@ import {
 } from "@/components/ui/popover";
 import TrashBox from "./TrashBox";
 import { useSearch } from "@/hooks/use-search";
+import { useSettings } from "@/hooks/use-settings";
 
 const Navigation = () => {
+  const settings = useSettings();
   const search = useSearch();
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -151,7 +153,7 @@ const Navigation = () => {
         <div>
           <UserItem />
           <Item label="Search" icon={Search} isSearch onClick={search.onOpen} />
-          <Item label="Settings" icon={Settings} onClick={() => {}} />
+          <Item label="Settings" icon={Settings} onClick={settings.onOpen} />
           <Item onClick={handleCreate} label="New Note" icon={PlusCircle} />
         </div>
         <div className="mt-5">
@@ -177,7 +179,7 @@ const Navigation = () => {
         <div
           onMouseDown={handleMouseDown}
           onClick={resetWidth}
-          className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-primary/10 right-0 top-0"
+          className="opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute h-full w-1 bg-blue-500/50 right-0 top-0"
         />
       </aside>
       <div
@@ -188,7 +190,7 @@ const Navigation = () => {
           isMobile && "w-full left-0",
         )}
       >
-        <nav className="bg-transparent px-3 py-2 w-full">
+        <nav className="bg-transparent px-3 py-3 w-full">
           {isCollapsed && (
             <MenuIcon
               role="button"
