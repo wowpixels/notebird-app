@@ -114,7 +114,7 @@ const Toolbar = ({ initialData, preview }: ToolbarProps) => {
         <TextareaAutosize
           ref={inputRef}
           onBlur={disableInput}
-          onKeyDown={onkeydown}
+          onKeyDown={onKeyDown}
           onChange={(e) => onInput(e.target.value)}
           value={value}
           className="text-5xl bg-transparent font-bold break-words outline-none text-[#3f3f3f] dark:text-[#cfcfcf] resize-none"
