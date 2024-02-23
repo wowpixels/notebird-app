@@ -19,8 +19,8 @@ export const SettingsModal = () => {
             <Label>Appearance</Label>
             <span>Customize how NoteBird should look on your device.</span>
           </div>
+          <ModeToggle />
         </div>
-        <ModeToggle />
       </DialogContent>
     </Dialog>
   );

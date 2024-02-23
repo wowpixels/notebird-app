@@ -103,6 +103,7 @@ export const create = mutation({
   },
 });
 
+// create a query to get all documents in the trash
 export const getTrash = query({
   handler: async (ctx) => {
     const identity = await ctx.auth.getUserIdentity();
@@ -120,6 +121,7 @@ export const getTrash = query({
   },
 });
 
+// create a mutation to restore a document
 export const restore = mutation({
   args: { id: v.id("documents") },
   handler: async (ctx, args) => {
@@ -175,6 +177,7 @@ export const restore = mutation({
   },
 });
 
+// create a mutation to delete a document
 export const remove = mutation({
   args: { id: v.id("documents") },
   handler: async (ctx, args) => {
@@ -199,6 +202,7 @@ export const remove = mutation({
   },
 });
 
+// create a query to get all documents
 export const getSearch = query({
   handler: async (ctx) => {
     const identity = await ctx.auth.getUserIdentity();
@@ -216,6 +220,7 @@ export const getSearch = query({
   },
 });
 
+// create a query to get a document by id
 export const getById = query({
   args: { documentId: v.id("documents") },
   handler: async (ctx, args) => {
@@ -244,6 +249,7 @@ export const getById = query({
   },
 });
 
+// create a mutation to update a document
 export const update = mutation({
   args: {
     id: v.id("documents"),
@@ -273,6 +279,33 @@ export const update = mutation({
     }
 
     const document = await ctx.db.patch(args.id, { ...rest });
+
+    return document;
+  },
+});
+
+// create a mutation to remove the cover Icon from a document
+export const removeIcon = mutation({
+  args: { id: v.id("documents") },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      throw new Error("Not logged in");
+    }
+    const userId = identity.subject;
+    const existingDocument = await ctx.db.get(args.id);
+
+    if (!existingDocument) {
+      throw new Error("Page not found");
+    }
+
+    if (existingDocument.userId !== userId) {
+      throw new Error("Unauthorized");
+    }
+
+    const document = await ctx.db.patch(args.id, {
+      icon: undefined,
+    });
 
     return document;
   },
