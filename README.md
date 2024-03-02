@@ -6,9 +6,9 @@
 ![Clerk](https://img.shields.io/badge/Clerk-6C47FF.svg?style=for-the-badge&logo=Clerk&logoColor=white)
 ![ShadCN](https://img.shields.io/badge/shadcn/ui-000000.svg?style=for-the-badge&logo=shadcn/ui&logoColor=white)
 
-The NoteBird App is a note-taking app, a Notion Clone. The app is developed for educational purposes to learn how such a full stack app is developed. The following tech is used in NoteBird. I followed the course on CodeWithAntonio.
+The NoteBird App is a note-taking app, a Notion Clone. The app is developed for educational purposes to learn how such a full stack app is developed. I have followed the course on CodeWithAntonio to create the NoteBird app.
 
-The following tech is used alongside with Next.js:
+The following tech is used within the Next.js framework:
 
 - BlockNotes, the main editor
 - Clerk, Auth
@@ -35,4 +35,5 @@ npm install
 
 ```bash
 npm run dev
+npx convex dev
 ```
