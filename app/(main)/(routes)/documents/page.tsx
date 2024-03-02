@@ -8,14 +8,18 @@ import { toast } from "sonner";
 // use convex/react to interact with the convex api
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { useRouter } from "next/navigation";
 
 const DocumentsPage = () => {
+  const router = useRouter();
   const { user } = useUser();
   const create = useMutation(api.documents.create); // create a new document, we are now using api.documents because the api / folder in convex is called 'documents' you can rename it to whatsoever you want
 
   // We are going to use a handler function to create a new document, you can instead use the create function directly in your code with an onClick event but I prefer to use a handler function to keep my code clean
   const onCreate = () => {
-    const promise = create({ title: "Untitled" }); // create a new document with the title 'Untitled'
+    const promise = create({ title: "Untitled" }).then((documentId) =>
+      router.push(`/documents/${documentId}`),
+    ); // create a new document with the title 'Untitled' and then redirect the user to the new document page
 
     toast.promise(promise, {
       loading: "Creating a new note...",

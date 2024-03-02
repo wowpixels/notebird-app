@@ -2,7 +2,7 @@
 
 import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
 import { useCoverImage } from "@/hooks/use-cover-image";
-import { SingleImageDropzone } from "../SingleImageDropzone";
+import { SingleImageDropzone } from "../../../../components/SingleImageDropzone";
 import { useState } from "react";
 import { useEdgeStore } from "@/lib/edgestore";
 import { useMutation } from "convex/react";
