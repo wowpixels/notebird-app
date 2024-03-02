@@ -6,14 +6,20 @@
 ![Clerk](https://img.shields.io/badge/Clerk-6C47FF.svg?style=for-the-badge&logo=Clerk&logoColor=white)
 ![ShadCN](https://img.shields.io/badge/shadcn/ui-000000.svg?style=for-the-badge&logo=shadcn/ui&logoColor=white)
 
-The NoteBird App is a note-taking app, basically a Notion Clone. The app is developed for educational purposes to learn how such a full stack app is developed. The following tech is used in NoteBird:
+The NoteBird App is a note-taking app, a Notion Clone. The app is developed for educational purposes to learn how such a full stack app is developed. The following tech is used in NoteBird. I followed the course on CodeWithAntonio.
 
-- TailwindCSS
-- Convex, The Backend
+The following tech is used alongside with Next.js:
+
+- BlockNotes, the main editor
 - Clerk, Auth
-- Sonner, Toast Notifications
+- Convex, The Backend
+- Emoji Picker React
 - ShadCN, UI
+- Sonner, Toast Notifications
+- TailwindCSS
 - usehooks-ts, React hook lib written in TypeScript
+- Zod, Schema declaration and validation lib
+- Zustand, State Management
 
 **Live:** [NoteBird App](https://notebird.wowpixels.app)
 
