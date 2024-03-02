@@ -12,7 +12,7 @@ interface EditorProps {
   editable?: boolean;
 }
 
-export const Editor = ({ onChange, initialContent, editable }: EditorProps) => {
+const Editor = ({ onChange, initialContent, editable }: EditorProps) => {
   const { resolvedTheme } = useTheme(); // using next-themes to get the current theme
   const { edgestore } = useEdgeStore();
 
@@ -28,9 +28,7 @@ export const Editor = ({ onChange, initialContent, editable }: EditorProps) => {
   // creating the editor
   const editor: BlockNoteEditor = useBlockNote({
     editable,
-    initialContent: initialContent
-      ? (JSON.parse(initialContent) as PartialBlock[])
-      : undefined,
+    initialContent: initialContent ? JSON.parse(initialContent) : undefined,
     onEditorContentChange: (content) => {
       onChange(JSON.stringify(content.topLevelBlocks, null, 2));
     },
@@ -46,3 +44,5 @@ export const Editor = ({ onChange, initialContent, editable }: EditorProps) => {
     </div>
   );
 };
+
+export default Editor;

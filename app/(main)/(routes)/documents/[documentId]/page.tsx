@@ -1,7 +1,8 @@
 "use client";
 
 import Cover from "@/components/Cover";
-import { Editor } from "@/components/Editor";
+import dynamic from "next/dynamic";
+import { useMemo } from "react";
 import Toolbar from "@/components/Toolbar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { api } from "@/convex/_generated/api";
@@ -15,6 +16,11 @@ interface DocumentIdPageProps {
 }
 
 const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
+  const Editor = useMemo(
+    () => dynamic(() => import("@/components/Editor"), { ssr: false }),
+    [],
+  ); // Lazy load the editor
+
   const document = useQuery(api.documents.getById, {
     documentId: params.documentId,
   });
